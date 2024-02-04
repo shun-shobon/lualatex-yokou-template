@@ -1,0 +1,43 @@
+{
+  "latex-workshop.intellisense.file.base": "file relative",
+  "latex-workshop.intellisense.package.enabled": true,
+  "latex-workshop.latex.outDir": "out",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": ["latexmk"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "args": [
+        "-interaction=nonstopmode",
+        "-shell-escape",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "command": "latexmk",
+      "name": "latexmk"
+    }
+  ],
+  "[latex][tex]": {
+    "editor.bracketPairColorization.enabled": true,
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "comments": false,
+      "other": true,
+      "strings": false
+    },
+    "editor.stickyScroll.enabled": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.tabSize": 2,
+    "editor.unicodeHighlight.allowedCharacters": {
+      "，": true,
+      "．": true
+    },
+    "editor.unicodeHighlight.invisibleCharacters": true,
+    "editor.wordWrap": "on"
+  }
+}

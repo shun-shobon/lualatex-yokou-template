@@ -1,0 +1,199 @@
+% クラスファイルを指定
+% jlreqはW3Cで勧告されている日本語組版処理の要件を満たすクラスファイル
+% jarticle, jreport, jbookなどは古い上に日本語組版処理の要件を満たしていないため使わない
+\documentclass[
+  % LuaLaTeXを使う
+  luatex,
+  % 用紙サイズをA4にする
+  paper=a4paper,
+  % 欧文のフォントサイズを11ptにする
+  fontsize=11pt,
+  % 2段組にする
+  twocolumn,
+  % 日本語組版処理の記述と矛盾する設定がある場合に通知
+  jlreq_notes,
+]{jlreq}
+
+% 画像を扱う
+\usepackage{graphicx}
+
+% pdfのハイパーリンクを設定
+\usepackage[colorlinks=true]{hyperref}
+
+% 相対パスでファイルを読み込む
+\usepackage{import}
+
+% 数式関連
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+% 参照した数式番号のみを表示する
+\mathtoolsset{showonlyrefs=true}
+
+% 数式のフォントを変更
+% amsmathより後に読み込む必要がある
+\usepackage[
+  % mathtoolsと一部競合するため，警告を無視
+  warnings-off={mathtools-colon,mathtools-overbracket}
+]{unicode-math}
+\unimathsetup{math-style=TeX,bold-style=TeX}
+\setmainfont[Ligatures=TeX]{Latin Modern Roman}
+\setsansfont[Ligatures=TeX]{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+\setmathfont{Latin Modern Math}
+% \setmathfont{XITS Math}[range={scr,bfscr}]% Latin Modern Mathにscr体がないので
+
+% フォントを設定
+% unicode-mathの後でないとフォントが変更されない
+\usepackage[
+  % ヒラギノ明朝(プロポーショナル)を使用
+  hiragino-pron,
+  % 多ウェイト化を有効にする
+  deluxe,
+  % jlreqで使えるようにする
+  jfm_yoko=jlreq,
+  jfm_tate=jlreqv,
+]{luatexja-preset}
+
+
+% 単位付き数値の入力を楽にする
+\usepackage{siunitx}
+
+% 数式の記述を楽にする
+\usepackage{physics2}
+% 括弧のサイズを自動調整する
+\usephysicsmodule{ab}
+% 行列の記述を楽にする
+\usephysicsmodule{diagmat}
+\usephysicsmodule{xmat}
+
+% 微分記号の入力を楽にする
+\usepackage{derivative}
+
+% 表の罫線を扱う
+\usepackage{booktabs}
+
+% ソースコードを扱う
+\usepackage{listings}
+\lstset{
+  % タブの展開後のサイズ
+  tabsize={4},
+  % 行番号表示，デフォルト: none 他のオプション: left, right
+  numbers=left,
+  % 書体の指定，行番号の書体指定
+  basicstyle={\small},
+  % 識別子の書体指定
+  identifierstyle={\small},
+  % 行番号の書体指定
+  %numberstyle=\scriptsize,
+  % 注釈の書体。
+  commentstyle={\small\ttfamily},
+  ndkeywordstyle={\small},
+  % キーワードの書体指定。
+  keywordstyle={\small\bfseries},
+  stringstyle={\small\ttfamily},
+  columns=[l]{fullflexible},
+  xrightmargin=0\zw,
+  xleftmargin=0\zw,
+  numbersep=1\zw,
+  %backgroundcolor={\color[gray]{.85}},
+  % frameの指定．デフォルト: none 他のオプション: leftline, topline, bottomline, lines, single, shadowbox
+  frame=lines,
+  % 行が長くなってしまった場合の改行．デフォルト: false
+  breaklines=true,
+}
+
+% 図や表や式の参照用マクロ
+\newcommand{\figref}[1]{\figurename~\ref{#1}}
+\newcommand{\tabref}[1]{\tablename~\ref{#1}}
+\newcommand{\eqnref}[1]{式~\eqref{#1}}
+
+% 便利マクロ
+\newcommand{\F}{\symscr{F}} % フーリエ変換
+\newcommand{\ccolumn}[1]{\multicolumn{1}{c}{#1}} % 中央揃えの表のセル
+
+
+\begin{document}
+
+% タイトル
+\twocolumn[
+  \begin{@twocolumnfalse}
+    \begin{center}
+      \textbf{\LARGE タイトル}
+      \vspace{1em}
+
+      \textbf{\large サブタイトル}
+      \vspace{1em}
+
+      \textbf{著者名}
+      \vspace{1em}
+
+      \textbf{所属}
+      \vspace{1em}
+
+      \begin{abstract}
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+        なんかいい感じのアブストラクト
+      \end{abstract}
+    \end{center}
+  \end{@twocolumnfalse}
+]
+
+% 本文
+\section{はじめに}
+
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+This is a sample document.
+これはサンプルのドキュメントです。
+
+% 参考文献
+\bibliography{cite}
+\bibliographystyle{junsrt}
+
+\end{document}
